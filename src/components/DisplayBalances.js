@@ -5,20 +5,18 @@ import DisplayBalance from "./DisplayBalance";
 const DisplayBalances = ({balances = []}) => {
 
 
-  function renderBalance(balance){
-    return (
-      <Grid.Column>
-        <DisplayBalance label={balance.label} value={balance.value} color={balance.color} size={"tiny"}/>
-      </Grid.Column>
-    )
-  }
+
 
   return (
     <Segment textAlign="center">
       <Grid columns={balances.length}>
         <Grid.Row>
           {
-            balances.map(balance => renderBalance(balance))
+            balances.map(balance => (
+              <Grid.Column key={balance.id}>
+                <DisplayBalance label={balance.label} value={balance.value} color={balance.color} size={"tiny"}/>
+              </Grid.Column>
+            ))
           }
         </Grid.Row>
       </Grid>
